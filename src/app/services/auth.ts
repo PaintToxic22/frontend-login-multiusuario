@@ -32,10 +32,14 @@ export class AuthService {
   ) {}
 
   login(username: string, password: string): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(`${this.apiUrl}/login`, {
-      username,
-      password
-    });
+    return this.http.post<LoginResponse>(
+      `${this.apiUrl}/login`,
+      {
+        username,
+        password
+      },
+      { withCredentials: true }
+    );
   }
 
   setUser(user: User) {
